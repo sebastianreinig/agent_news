@@ -4,10 +4,10 @@ from openai import OpenAI
 import datetime
 from dotenv import load_dotenv
 import os
+import json
 
 # Load environment variables
 load_dotenv()
-
 
 def fetch_webpage_text(url):
     try:
@@ -65,13 +65,23 @@ def save_summaries_to_file(summaries):
     except IOError as e:
         print(f"Failed to save summaries: {e}")
 
+def load_urls_from_file(file_path):
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            return data.get("urls", [])
+    except (IOError, json.JSONDecodeError) as e:
+        print(f"Failed to load URLs from {file_path}: {e}")
+        return []
+
 def main():
-    # List of URLs to summarize
-    urls = [
-        "https://example.com",
-        "https://example.org",
-        "https://example.net"
-    ]
+    # Load URLs from file
+    urls_file = "urls.json"
+    urls = load_urls_from_file(urls_file)
+
+    if not urls:
+        print("No URLs to process. Please check the file.")
+        return
 
     # Initialize OpenAI client with API key
     openai_api_key = os.getenv("OPENAI_API_KEY")
