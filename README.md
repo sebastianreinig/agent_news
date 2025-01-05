@@ -101,6 +101,10 @@ The 'About' page explains the company's history, mission, and core values.
 - Improve subpage filtering to avoid irrelevant links.
 - Introduce error handling for complex webpage structures.
 
+## Disclaimer
+Important: Always ensure you have the right to scrape and process content from any webpage. Many websites prohibit web scraping in their terms of service. Before using this tool, review the website’s terms and conditions and obtain explicit permission if necessary. Unauthorized scraping of websites may violate legal or ethical standards and can lead to penalties or legal action. Use this tool responsibly and in compliance with applicable laws and regulations.
+
+
 ## Credits
 
 This project was created using:
